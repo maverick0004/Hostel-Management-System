@@ -17,7 +17,7 @@ class Student(models.Model):
 
 
 class Room(models.Model):
-    r_type = [('S', 'Single Occupancy'),('D', 'Double Occupancy')]
+    r_type = [('S', 'Single Occupancy'), ('D', 'Double Occupancy')]
     no = models.CharField(max_length=5)
     name = models.CharField(max_length=10)
     room_type = models.CharField(choices=r_type, max_length=1, default=None)
@@ -35,4 +35,3 @@ class Hostel(models.Model):
 
     def __str__(self):
         return self.name
-

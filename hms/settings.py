@@ -55,7 +55,7 @@ ROOT_URLCONF = 'hms.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['selection/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
