@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Student, Room, Hostel, Course, Year
+from .models import Student, Room, Hostel, Course
 
 
 @admin.register(Student)
@@ -12,7 +12,6 @@ class StudentAdmin(admin.ModelAdmin):
         'enrollment_no',
         'course',
         'dob',
-        'current_year',
         'room',
         'room_allotted']
 
@@ -29,9 +28,4 @@ class HostelAdmin(admin.ModelAdmin):
 
 @admin.register(Course)
 class CourseAdmin(admin.ModelAdmin):
-    list_display = ['name']
-
-
-@admin.register(Year)
-class YearAdmin(admin.ModelAdmin):
-    list_display = ['year']
+    list_display = ['code', 'room_type']

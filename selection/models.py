@@ -17,11 +17,6 @@ class Student(models.Model):
         null=True,
         default=None,
         on_delete=models.CASCADE)
-    current_year = models.ForeignKey(
-        'Year',
-        default=None,
-        null=True,
-        on_delete=models.CASCADE)
     dob = models.DateField(
         max_length=10,
         help_text="format : YYYY-MM-DD",
@@ -38,15 +33,15 @@ class Student(models.Model):
         null=True)
     room_allotted = models.BooleanField(default=False)
 
-    '''def __str__(self):
-            return self.student_name'''
+    def __str__(self):
+        return self.student_name
 
 
 class Room(models.Model):
-    r_type = [('S', 'Single Occupancy'), ('D', 'Double Occupancy')]
+    room_choice = [('S', 'Single Occupancy'), ('D', 'Double Occupancy'), ('P', 'Reserved for Research Scholars'),('B', 'Both Single and Double Occupancy')]
     no = models.CharField(max_length=5)
     name = models.CharField(max_length=10)
-    room_type = models.CharField(choices=r_type, max_length=1, default=None)
+    room_type = models.CharField(choices=room_choice, max_length=1, default=None)
     vacant = models.BooleanField(default=False)
     hostel = models.ForeignKey('Hostel', on_delete=models.CASCADE)
 
@@ -63,7 +58,6 @@ class Hostel(models.Model):
         default=None,
         null=True)
     course = models.ManyToManyField('Course', default=None, blank=True)
-    current_year = models.ManyToManyField('Year', default=None, blank=True)
     warden = models.CharField(max_length=100, blank=True)
     caretaker = models.CharField(max_length=100, blank=True)
 
@@ -72,14 +66,10 @@ class Hostel(models.Model):
 
 
 class Course(models.Model):
-    name = models.CharField(max_length=100, default=None)
+    # if a student has enrollment number iit2017001 then the course code is iit2017
+    code = models.CharField(max_length=100, default=None)
+    room_choice = [('S', 'Single Occupancy'), ('D', 'Double Occupancy'), ('P', 'Reserved for Research Scholars'), ('B', 'Both Single and Double Occupancy')]
+    room_type = models.CharField(choices=room_choice, max_length=1, default='D')
 
     def __str__(self):
-        return self.name
-
-
-class Year(models.Model):
-    year = models.IntegerField(default=None)
-
-    def __str__(self):
-        return str(self.year)
+        return self.code

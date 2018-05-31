@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import UserForm, RegistrationForm, LoginForm, SelectionForm
 from django.http import HttpResponse, Http404
-from selection.models import Student, Room, Hostel, Year, Course
+from selection.models import Student, Room, Hostel
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
@@ -73,7 +73,7 @@ def edit(request):
 @login_required
 def select(request):
     if request.user.student.room:
-        r_id_before = request.user.student.room_id
+        room_id_old = request.user.student.room_id
 
     if request.method == 'POST':
         form = SelectionForm(request.POST, instance=request.user.student)
@@ -85,7 +85,7 @@ def select(request):
                 room.vacant = False
                 room.save()
                 try:
-                    room = Room.objects.get(id=r_id_before)
+                    room = Room.objects.get(id=room_id_old)
                     room.vacant = True
                     room.save()
                 except BaseException:
@@ -93,7 +93,7 @@ def select(request):
             else:
                 request.user.student.room_allotted = False
                 try:
-                    room = Room.objects.get(id=r_id_before)
+                    room = Room.objects.get(id=room_id_old)
                     room.vacant = True
                     room.save()
                 except BaseException:
@@ -102,21 +102,23 @@ def select(request):
             return render(request, 'profile.html')
     else:
         form = SelectionForm(instance=request.user.student)
-        gen = request.user.student.gender
-        year = request.user.student.current_year_id
-        student_course = request.user.student.course_id
+        student_gender = request.user.student.gender
+        student_course = request.user.student.course
+        student_room_type = request.user.student.course.room_type
         hostel = Hostel.objects.filter(
-            gender=gen, course=student_course, current_year=year)
+            gender=student_gender, course=student_course)
         x = Room.objects.none()
-        for i in range(len(hostel)):
-            h_id = hostel[i].id
-            if year <= 2:
+        if student_room_type == 'B':
+            for i in range(len(hostel)):
+                h_id = hostel[i].id
                 a = Room.objects.filter(
-                    hostel_id=h_id, room_type='D', vacant=True)
+                    hostel_id=h_id, vacant=True)
                 x = x | a
-            else:
+        else :
+            for i in range(len(hostel)):
+                h_id = hostel[i].id
                 a = Room.objects.filter(
-                    hostel_id=h_id, room_type='D', vacant=True)
+                    hostel_id=h_id, room_type=student_room_type, vacant=True)
                 x = x | a
         form.fields["room"].queryset = x
         return render(request, 'edit.html', {'form': form})
