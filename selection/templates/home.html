@@ -1,12 +1,12 @@
-<html>
-    <body>
-        <div class ="cointainer">
-            <a href="{% url 'reg_form' %}">
-                <h3>Register</h3>
-            </a>
-            <a href="{% url 'login' %}">
-				<h3>Login</h3>
-			</a>
-        </div>
-    </body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="wrap">
+    <a class="button-custom" href="{% url 'reg_form' %}">
+        Register
+    </a>
+    <a class="button-custom" href="{% url 'login' %}">
+        Login
+    </a>
+  </div>
+{% endblock content %}

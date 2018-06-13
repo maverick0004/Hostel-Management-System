@@ -1,16 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title: {{ hostel.name }}</title>
-</head>
-<body>
-    <ul>
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="wrap">
+    <div class="rooms">List of Rooms</div>
+    <ul class="rooms">
         {% for room in rooms %}
-            <li>
+            <li class="{% if room.vacant %}vacant{% endif %}">
                {{ room.name }} - {% if room.vacant %} vacant {% else %} occupied {% endif %}
             </li>
         {% endfor %}
     </ul>
-</body>
-</html>
+</div>
+{% endblock content %}

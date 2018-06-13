@@ -1,11 +1,17 @@
-<html>
-    <body>
-        <div class ="cointainer">
-            <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <input type = "submit" value = "Update">
-            </form>
-        </div>
-    </body>
-</html>
+
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="wrap">
+    <form action="" method="post">
+        {% csrf_token %}
+      <div class="fields"> Student Name <br><br> {{ form.student_name }}</div>
+      <div class="fields"> Father's Name <br><br> {{ form.father_name }}</div>
+      <div class="fields"> Enrollment Number <br><br> {{ form.enrollment_no }}</div>
+      <div class="fields"> Course {{ form.course }}</div>
+      <div class="fields"> Date of birth (yyyy-mm-dd) <br><br> {{ form.dob }}</div>
+      <div class="fields"> Gender {{ form.gender }}</div>
+      <input class="button-custom" type="submit" value="DONE">
+    </form>
+  </div>
+{% endblock content %}

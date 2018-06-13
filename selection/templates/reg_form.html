@@ -1,11 +1,13 @@
-<html>
-    <body>
-        <div class ="cointainer">
-            <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <input type = "submit" value = "Register">
-            </form>
-        </div>
-    </body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="wrap">
+    <form action="" method="post">
+        {% csrf_token %}
+      <div class="fields"> Username <br><br> {{ form.username }}</div>
+      <div class="fields"> Password <br><br> {{ form.password1 }}</div>
+      <div class="fields"> Repeat Password <br><br> {{ form.password2 }}</div>
+      <input class="button-custom" type="submit" value="REGISTER">
+    </form>
+  </div>
+{% endblock content %}

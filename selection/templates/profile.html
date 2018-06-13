@@ -1,15 +1,15 @@
-<html>
-    <body>
-        <div class ="cointainer">
-            <a href="{% url 'edit' %}">
-				<h3>Update Details</h3>
-            </a>
-            <a href="{% url 'select' %}">
-				<h3>Select a Room</h3>
-			</a>
-            <a href="{% url 'logout' %}">
-				<h3>Logout</h3>
-            </a>
-        </div>
-    </body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="wrap">
+    <a class="button-custom" href="{% url 'edit' %}">
+        Update Details
+    </a>
+    <a class="button-custom" href="{% url 'select' %}">
+        Select a Room
+    </a>
+    <a class="button-custom" href="{% url 'logout' %}">
+        Logout
+    </a>
+  </div>
+{% endblock content %}

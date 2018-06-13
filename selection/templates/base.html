@@ -1,0 +1,220 @@
+<html>
+
+  <head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <style type="text/css">
+
+      @import url(https://fonts.googleapis.com/css?family=Inconsolata:700);
+
+
+      body {
+        font-family: 'Inconsolata', sans-serif;
+        font-style: normal;
+        margin: 0px;
+        background: linear-gradient(#c8daea, #dae7f1);
+      }
+
+      .wrap {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        color: white;
+        padding: 15px;
+        text-align: center;
+        border: 2px white solid;
+        border-radius: 3px;
+      }
+
+      .button-custom {
+        -webkit-transition: all 300ms cubic-bezier(0.1590, 0.500, 0.150, 1.360);
+        -moz-transition: all 300ms cubic-bezier(0.1590, 0.500, 0.150, 1.360);
+        -ms-transition: all 300ms cubic-bezier(0.1590, 0.500, 0.150, 1.360);
+        -o-transition: all 300ms cubic-bezier(0.1590, 0.500, 0.150, 1.360);
+        transition: all 300ms cubic-bezier(0.1590, 0.500, 0.150, 1.360);
+        display: block;
+        margin: 20px auto;
+        max-width: 180px;
+        border-radius: 4px;
+        padding: 10px 35px;
+        border: none;
+        color: black;
+        background-color: white;
+        box-shadow: steelblue 0 0px 0px 2px inset;
+        font-family: 'Inconsolata', sans-serif;
+        font-style: normal;
+        font-size: 1.3em;
+      }
+
+      .button-custom:hover {
+        color: white;
+        box-shadow: steelblue 0 80px 0px 2px inset;
+        border: none;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      .nav {
+        height: 50px;
+        width: 100%;
+        background-color: steelblue;
+        position: relative;
+        z-index: 1;
+      }
+
+      .nav > .nav-header {
+        display: inline;
+      }
+
+      .nav > .nav-header > .nav-title {
+        display: inline-block;
+        font-size: 22px;
+        color: #fff;
+        padding: 10px 10px 10px 10px;
+      }
+
+      .nav > .nav-btn {
+        display: none;
+      }
+
+      .nav > .nav-links {
+        display: inline;
+        float: right;
+        font-size: 18px;
+      }
+
+      .nav > .nav-links > a {
+        display: inline-block;
+        padding: 13px 10px 13px 10px;
+        text-decoration: none;
+        color: #fff;
+      }
+
+      .nav > .nav-links > a:hover {
+        background-color: lightsteelblue;
+      }
+
+      .nav > #nav-check {
+        display: none;
+      }
+
+      .nav-title > a {
+          text-decoration:none;
+          color: white;
+      }
+
+      .nav-title > a:active, .nav-title > a:hover, .nav-title > a:focus {
+          text-decoration:none;
+          color: white;
+      }
+
+
+      @media screen and (max-width:700px) {
+        .nav > .nav-btn {
+          display: inline-block;
+          position: absolute;
+          right: 0px;
+          top: 0px;
+        }
+        .nav > .nav-btn > label {
+          display: inline-block;
+          width: 50px;
+          height: 50px;
+          padding: 13px;
+          background-color: lightsteelblue;
+        }
+        .nav > .nav-btn > label:hover {
+          background-color: lightsteelblue;
+        }
+        .nav > .nav-btn > label > span {
+          display: block;
+          width: 25px;
+          height: 10px;
+          border-top: 2px solid #eee;
+        }
+        .nav > .nav-links {
+          position: absolute;
+          display: block;
+          width: 100%;
+          background-color: lightsteelblue;
+          height: 0px;
+          transition: all 0.15s ease-in;
+          overflow-y: hidden;
+          top: 50px;
+          left: 0px;
+        }
+        .nav > .nav-links > a {
+          display: block;
+          width: 100%;
+        }
+        .nav > #nav-check:not(:checked) + .nav-links {
+          height: 0px;
+        }
+        .nav > #nav-check:checked + .nav-links {
+          height: calc(100vh - 50px);
+          overflow-y: auto;
+        }
+      }
+
+      .fields {
+        padding: 10px;
+        margin: 10px;
+        color: black;
+        font-family: serif;
+      }
+
+      input {
+          border: none;
+          border-bottom: 3px solid black;
+          text-align: center;
+          font-family: serif;
+          font-size: 1em;
+          background-color: rgba(0,0,0,0);
+      }
+
+      input:focus {
+          border-bottom: 4px solid steelblue;
+          background-color: rgba(0,0,0,0);
+      }
+
+      textarea:focus, input:focus{
+          outline: none;
+      }
+    </style>
+  </head>
+
+  <body>
+
+
+  <div class="nav">
+    <div class="nav-header">
+      <div class="nav-title">
+        <a href="{% url 'register' %}">Hostel Management</a>
+      </div>
+    </div>
+    <div class="nav-btn">
+      <label for="nav-check">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+    </div>
+    <input type="checkbox" id="nav-check">
+    <div class="nav-links">
+      <a href="{% url 'login' %}">Login</a>
+      <a href="{% url 'reg_form' %}">Register</a>
+      <a href=" ">Status</a>
+    </div>
+  </div>
+
+  {% block content %}
+  {% endblock content %}
+
+
+  </body>
+</html>

@@ -112,7 +112,7 @@ def select(request):
             for i in range(len(hostel)):
                 h_id = hostel[i].id
                 a = Room.objects.filter(
-                    hostel_id=h_id, vacant=True)
+                    hostel_id=h_id, room_type=['A', 'B'], vacant=True)
                 x = x | a
         else :
             for i in range(len(hostel)):
@@ -121,7 +121,7 @@ def select(request):
                     hostel_id=h_id, room_type=student_room_type, vacant=True)
                 x = x | a
         form.fields["room"].queryset = x
-        return render(request, 'edit.html', {'form': form})
+        return render(request, 'select_room.html', {'form': form})
 
 
 def logout_view(request):
