@@ -128,6 +128,42 @@ def logout_view(request):
     logout(request)
     return redirect('/')
 
+def BH5_Floor1(request):
+    room_list = Room.objects.order_by('name')
+    room_dict = {'rooms':room_list}
+    return render(request, 'BH5_Floor1.html',context=room_dict)
+
+def BH5_Floor2(request):
+    room_list = Room.objects.order_by('name')
+    room_dict = {'rooms':room_list}
+    return render(request, 'BH5_Floor2.html',context=room_dict)
+
+def BH5_Floor3(request):
+    room_list = Room.objects.order_by('name')
+    room_dict = {'rooms':room_list}
+    return render(request, 'BH5_Floor3.html',context=room_dict)
+
+def BH5_Floor4(request):
+    room_list = Room.objects.order_by('name')
+    room_dict = {'rooms':room_list}
+    return render(request, 'BH5_Floor4.html',context=room_dict)
+
+def BH5_Floor5(request):
+    room_list = Room.objects.order_by('name')
+    room_dict = {'rooms':room_list}
+    return render(request, 'BH5_Floor5.html',context=room_dict)
+
+def BH5_Floor6(request):
+    room_list = Room.objects.order_by('name')
+    room_dict = {'rooms':room_list}
+    return render(request, 'BH5_Floor6.html',context=room_dict)
+
+def BH5_GroundFloor(request):
+    room_list = Room.objects.order_by('name')
+    room_dict = {'rooms':room_list}
+    return render(request, 'BH5_GroundFloor.html',context=room_dict)
+
+
 
 def hostel_detail_view(request, hostel_name):
     try:

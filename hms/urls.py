@@ -12,4 +12,11 @@ urlpatterns = [
     path('login/select/', views.select, name='select'),
     path('logout/', views.logout_view, name='logout'),
     path('reg_form/login/edit/', views.edit, name='update'),
+    path('BH5_GroundFloor/', views.BH5_GroundFloor, name='BH5_GroundFloor'),
+    path('BH5_Floor1/', views.BH5_Floor1, name='BH5_Floor1'),
+    path('BH5_Floor2/', views.BH5_Floor2, name='BH5_Floor2'),
+    path('BH5_Floor3/', views.BH5_Floor3, name='BH5_Floor3'),
+    path('BH5_Floor4/', views.BH5_Floor4, name='BH5_Floor4'),
+    path('BH5_Floor5/', views.BH5_Floor5, name='BH5_Floor5'),
+    path('BH5_Floor6/', views.BH5_Floor6, name='BH5_Floor6'),
 ]
