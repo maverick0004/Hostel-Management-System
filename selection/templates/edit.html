@@ -15,3 +15,16 @@
     </form>
   </div>
 {% endblock content %}
+
+
+{% block more_links %}
+    <a href="{% url 'edit' %}">
+            Update Details
+        </a>
+        <a href="{% url 'select' %}">
+            Select a Room
+        </a>
+        <a href="{% url 'logout' %}">
+            Logout
+        </a>
+{% endblock more_links %}

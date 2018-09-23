@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="wrap">
+    <form action="" method="post">
+        {% csrf_token %}
+      <div class="fields">{{ form.as_p }}</div>
+      <input class="button-custom" type="submit" value="ADD DUE">
+    </form>
+  </div>
+{% endblock content %}
+
+
+{% block more_links %}
+    <a href="{% url 'warden_dues' %}">
+        Dues
+    </a>
+    <a href="{% url 'warden_add_due' %}">
+        Add Due
+    </a>
+    <a href="{% url 'warden_remove_due' %}">
+        Remove Due
+    </a>
+    <a href="{% url 'logout' %}">
+        Logout
+    </a>
+{% endblock more_links %}

@@ -1,18 +1,87 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="wrap">
-    <a class="button-custom" href="{% url 'edit' %}">
-        Update Details
-    </a>
-    <a class="button-custom" href="{% url 'select' %}">
-        Select a Room
-    </a>
-    <a class="button-custom" href="{% url 'BH5_Floor4' %}">
-        Check Availibilty
-    </a>
-    <a class="button-custom" href="{% url 'logout' %}">
-        Logout
-    </a>
-  </div>
+
+    <div class="wrapper">
+        <div class="table">
+
+            <div class="row">
+                <div class="cell">
+                    Name
+                </div>
+                <div class="cell">
+                    {{ student.student_name }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="cell">
+                    Father's Name
+                </div>
+                <div class="cell">
+                    {{ student.father_name }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="cell">
+                    Enrollment Number
+                </div>
+                <div class="cell">
+                    {{ student.course }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="cell">
+                    Date of birth (yyyy-mm-dd)
+                </div>
+                <div class="cell">
+                    {{ student.dob }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="cell">
+                    Gender
+                </div>
+                <div class="cell">
+                    {{ student.gender }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="cell">
+                    Room
+                </div>
+                <div class="cell">
+                    {% if student.room_allotted %} {{ student.room }} in {{ student.room.hostel }}
+                    {% else %} Not Allotted
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="cell">
+                    Dues
+                </div>
+                <div class="cell">
+                    {% if student.no_dues %} <div style="color: green">No Dues</div>
+                    {% else %} <div style="color: red">Unpaid Dues</div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <a class="button-custom" href="{% url 'select' %}">
+            Select a Room
+        </a>
+    </div>
+
 {% endblock content %}
+
+
+{% block more_links %}
+    <a href="{% url 'edit' %}">
+            Update Details
+        </a>
+        <a href="{% url 'select' %}">
+            Select a Room
+        </a>
+        <a href="{% url 'logout' %}">
+            Logout
+        </a>
+{% endblock more_links %}

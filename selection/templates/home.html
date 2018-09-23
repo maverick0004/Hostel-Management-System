@@ -6,7 +6,16 @@
         Register
     </a>
     <a class="button-custom" href="{% url 'login' %}">
-        Login
+        Login (Students)
+    </a>
+    <a class="button-custom" href="{% url 'warden_login' %}">
+        Login (Wardens)
     </a>
   </div>
 {% endblock content %}
+
+
+{% block more_links %}
+    <a href="{% url 'login' %}">Login</a>
+    <a href="{% url 'reg_form' %}">Register</a>
+{% endblock more_links %}

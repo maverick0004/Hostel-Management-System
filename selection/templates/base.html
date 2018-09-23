@@ -1,416 +1,558 @@
 <html>
 
-  <head>
+<head>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
     <style type="text/css">
 
-      @import url(https://fonts.googleapis.com/css?family=Inconsolata:700);
+        @import url(https://fonts.googleapis.com/css?family=Inconsolata:700);
 
 
-      body {
-        font-family: 'Inconsolata', sans-serif;
-        font-style: normal;
-        margin: 0px;
-        background: linear-gradient(#c8daea, #dae7f1);
-      }
-
-      .wrap {
-        margin: 0;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: white;
-        color: white;
-        padding: 15px;
-        text-align: center;
-        border: 2px white solid;
-        border-radius: 3px;
-      }
-
-      .button-custom {
-        -webkit-transition: all 300ms cubic-bezier(0.1590, 0.500, 0.150, 1.360);
-        -moz-transition: all 300ms cubic-bezier(0.1590, 0.500, 0.150, 1.360);
-        -ms-transition: all 300ms cubic-bezier(0.1590, 0.500, 0.150, 1.360);
-        -o-transition: all 300ms cubic-bezier(0.1590, 0.500, 0.150, 1.360);
-        transition: all 300ms cubic-bezier(0.1590, 0.500, 0.150, 1.360);
-        display: block;
-        margin: 20px auto;
-        max-width: 180px;
-        border-radius: 4px;
-        padding: 10px 35px;
-        border: none;
-        color: black;
-        background-color: white;
-        box-shadow: steelblue 0 0px 0px 2px inset;
-        font-family: 'Inconsolata', sans-serif;
-        font-style: normal;
-        font-size: 1.3em;
-      }
-
-      .button-custom:hover {
-        color: white;
-        box-shadow: steelblue 0 80px 0px 2px inset;
-        border: none;
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      .nav {
-        height: 50px;
-        width: 100%;
-        background-color: steelblue;
-        position: relative;
-        z-index: 1;
-      }
-
-      .nav > .nav-header {
-        display: inline;
-      }
-
-      .nav > .nav-header > .nav-title {
-        display: inline-block;
-        font-size: 22px;
-        color: #fff;
-        padding: 10px 10px 10px 10px;
-      }
-
-      .nav > .nav-btn {
-        display: none;
-      }
-
-      .nav > .nav-links {
-        display: inline;
-        float: right;
-        font-size: 18px;
-      }
-
-      .nav > .nav-links > a {
-        display: inline-block;
-        padding: 13px 10px 13px 10px;
-        text-decoration: none;
-        color: #fff;
-      }
-
-      .nav > .nav-links > a:hover {
-        background-color: lightsteelblue;
-      }
-
-      .nav > #nav-check {
-        display: none;
-      }
-
-      .nav-title > a {
-          text-decoration:none;
-          color: white;
-      }
-
-      .nav-title > a:active, .nav-title > a:hover, .nav-title > a:focus {
-          text-decoration:none;
-          color: white;
-      }
+        body {
+            font-family: 'Inconsolata', sans-serif;
+            font-style: normal;
+            font-weight: 200;
+            margin: 0px;
+            background: linear-gradient(#c8daea, #dae7f1);
+        }
 
 
-      @media screen and (max-width:700px) {
+        a {
+            text-decoration: none;
+        }
+
+        .wrap {
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            color: black;
+            padding: 15px;
+            text-align: center;
+            border: 2px white solid;
+            border-radius: 3px;
+        }
+
+        .button-custom {
+            -webkit-transition: all 300ms cubic-bezier(0.1590, 0.500, 0.150, 1.360);
+            -moz-transition: all 300ms cubic-bezier(0.1590, 0.500, 0.150, 1.360);
+            -ms-transition: all 300ms cubic-bezier(0.1590, 0.500, 0.150, 1.360);
+            -o-transition: all 300ms cubic-bezier(0.1590, 0.500, 0.150, 1.360);
+            transition: all 300ms cubic-bezier(0.1590, 0.500, 0.150, 1.360);
+            display: block;
+            margin: 20px auto;
+            max-width: 180px;
+            border-radius: 4px;
+            padding: 10px 35px;
+            border: none;
+            color: black;
+            background-color: white;
+            box-shadow: steelblue 0 0px 0px 2px inset;
+            font-family: 'Inconsolata', sans-serif;
+            font-style: normal;
+            font-size: 1.3em;
+        }
+
+        .button-custom:hover {
+            color: white;
+            box-shadow: steelblue 0 80px 0px 2px inset;
+            border: none;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .nav {
+            height: 50px;
+            width: 100%;
+            background-color: steelblue;
+            position: relative;
+            z-index: 1;
+        }
+
+        .nav > .nav-header {
+            display: inline;
+        }
+
+        .nav > .nav-header > .nav-title {
+            display: inline-block;
+            font-size: 22px;
+            color: #fff;
+            padding: 10px 10px 10px 10px;
+        }
+
         .nav > .nav-btn {
-          display: inline-block;
-          position: absolute;
-          right: 0px;
-          top: 0px;
+            display: none;
         }
-        .nav > .nav-btn > label {
-          display: inline-block;
-          width: 50px;
-          height: 50px;
-          padding: 13px;
-          background-color: lightsteelblue;
-        }
-        .nav > .nav-btn > label:hover {
-          background-color: lightsteelblue;
-        }
-        .nav > .nav-btn > label > span {
-          display: block;
-          width: 25px;
-          height: 10px;
-          border-top: 2px solid #eee;
-        }
+
         .nav > .nav-links {
-          position: absolute;
-          display: block;
-          width: 100%;
-          background-color: lightsteelblue;
-          height: 0px;
-          transition: all 0.15s ease-in;
-          overflow-y: hidden;
-          top: 50px;
-          left: 0px;
+            display: inline;
+            float: right;
+            font-size: 18px;
         }
+
         .nav > .nav-links > a {
-          display: block;
-          width: 100%;
+            display: inline-block;
+            padding: 13px 10px 13px 10px;
+            text-decoration: none;
+            color: #fff;
         }
-        .nav > #nav-check:not(:checked) + .nav-links {
-          height: 0px;
+
+        .nav > .nav-links > a:hover {
+            background-color: lightsteelblue;
         }
-        .nav > #nav-check:checked + .nav-links {
-          height: calc(100vh - 50px);
-          overflow-y: auto;
+
+        .nav > #nav-check {
+            display: none;
         }
-      }
 
-      .fields {
-        padding: 10px;
-        margin: 10px;
-        color: black;
-        font-family: serif;
-      }
+        .nav-title > a {
+            text-decoration:none;
+            color: white;
+        }
 
-      input {
-          border: none;
-          border-bottom: 3px solid black;
-          text-align: center;
-          font-family: serif;
-          font-size: 1em;
-          background-color: rgba(0,0,0,0);
-      }
+        .nav-title > a:active, .nav-title > a:hover, .nav-title > a:focus {
+            text-decoration:none;
+            color: white;
+        }
 
-      input:focus {
-          border-bottom: 4px solid steelblue;
-          background-color: rgba(0,0,0,0);
-      }
 
-      textarea:focus, input:focus{
-          outline: none;
-      }
-      #seat {
-                  height: 25px;
-                  width: 25px;
-                  border: 1px solid gray;
-                  cursor:pointer;
-                  border-radius:5px;
-                  display: inline-block;
-                  font-size: 12.5px;
-                  font-family:Times, serif;
-                  text-align: center;
-                  padding:2px;
-              }
-      #seatS {
-                  height: 25px;
-                  width: 25px;
-                  border: 1px solid gray;
-                  cursor:pointer;
-                  border-radius:50%;
-                  display: inline-block;
-                  font-size: 12.5px;
-                  font-family:Times, serif;
-                  text-align: center;
-                  padding:2px;
-
-                      }
-      #seat1 {
-                  height: 20px;
-                  width: 20px;
-                  border: 1px solid gray;
-                  cursor:pointer;
-                  background-color: steelblue;
-                  border-radius:5px;
-                  font-size: 10.5px;
-                  font-family:Times, serif;
-                  padding:3.5px;
-              }
-      #seat2 {
-                  height: 20px;
-                  width: 20px;
-                  border: 1px solid gray;
-                  cursor:pointer;
-                  background-color: #b8c6dd;
-                  border-radius:5px;
-                  display: inline-block;
-                  font-size: 10.5px;
-                  font-family:Times, serif;
-                  padding:3.5px;
-                }
-      #seat3 {
-                  height: 20px;
-                  width: 20px;
-                  border: 1px solid gray;
-                  cursor:pointer;
-                  background-color: #eff5f7;
-                  border-radius:5px;
-                  display: inline-block;
-                  font-size: 10.5px;
-                  font-family:Times, serif;
-                  padding:3.5px;
-                }
-      #seat1S {
-                  height: 21px;
-                  width: 21px;
-                  border: 1px solid gray;
-                  cursor:pointer;
-                  border-radius:50%;
-                  background-color: #b8c6dd;
-                  display: inline-block;
-                  font-size: 10.5px;
-                  font-family:Times, serif;
-                  padding:3.5px;
-
-              }
-      #seat2S {
-                  height: 21px;
-                  width: 21px;
-                  border: 1px solid gray;
-                  cursor:pointer;
-                  border-radius:50%;
-                  background-color: #eff5f7;
-                  display: inline-block;
-                  font-size: 10.5px;
-                  font-family:Times, serif;
-                  padding:3.5px;
-              }
-      #walk{
-                  padding:0px;
-
-               }
-      #driver{
-                  background-color:gray;
-                  height: 20px;
-                  border-radius: 50%;
-              }
-      #bathroom{
-                  height: 30px;
-                  width: 30px;
-                  border: 1px solid gray;
-                  cursor:pointer;
-                  background-color:#4fb6c6;
-          		    margin:2px;
-      		        text-align:center;
-                  padding:4px;
-      	          font-family:Georgia, serif;
-              }
-      #block{
-                  height: 20px;
-                  width: 50px;
-                  border: 1px solid gray;
-                  border-radius:4px;
-                  cursor:pointer;
-                  background-color:#e2dd8a;
-                  margin:2px;
-                  text-align:center;
-                  font-family:Georgia, serif;
+        @media screen and (max-width:700px) {
+            .nav > .nav-btn {
+                display: inline-block;
+                position: absolute;
+                right: 0px;
+                top: 0px;
             }
-              .table1{
-                         opacity=0.2;
-                         background-color:#b8c6dd;
-                         background-size: 100% 800px;
-                         border-radius:5%;
-                         margin-left:20px;
-                         margin-right:20px;
-                       }
+            .nav > .nav-btn > label {
+                display: inline-block;
+                width: 50px;
+                height: 50px;
+                padding: 13px;
+                background-color: lightsteelblue;
+            }
+            .nav > .nav-btn > label:hover {
+                background-color: lightsteelblue;
+            }
+            .nav > .nav-btn > label > span {
+                display: block;
+                width: 25px;
+                height: 10px;
+                border-top: 2px solid #eee;
+            }
+            .nav > .nav-links {
+                position: absolute;
+                display: block;
+                width: 100%;
+                background-color: lightsteelblue;
+                height: 0px;
+                transition: all 0.15s ease-in;
+                overflow-y: hidden;
+                top: 50px;
+                left: 0px;
+            }
+            .nav > .nav-links > a {
+                display: block;
+                width: 100%;
+            }
+            .nav > #nav-check:not(:checked) + .nav-links {
+                height: 0px;
+            }
+            .nav > #nav-check:checked + .nav-links {
+                height: calc(100vh - 50px);
+                overflow-y: auto;
+            }
+        }
 
-                      .menu{
-                        height:410px;
-                        width:100%;
-                        padding:20px;
-                        border-radius:8px;
+        .fields {
+            padding: 10px;
+            margin: 10px;
+            color: black;
+            font-family: serif;
+        }
 
-                      }
-                      .row{
-                        margin-top:20px;
-                      }
-                      .grid{
-                        height:500px;
-                        width:100%;
+        input {
+            border: none;
+            border-bottom: 3px solid black;
+            text-align: center;
+            font-family: serif;
+            font-size: 1em;
+            background-color: rgba(0,0,0,0);
+        }
 
-                      }
-                      /* Dropdown container - needed to position the dropdown content */
-                      .dropdown {
-                          float: right;
-                          overflow: hidden;
-                          padding-right:20px;
-                      }
+        input:focus {
+            border-bottom: 4px solid steelblue;
+            background-color: rgba(0,0,0,0);
+        }
 
-                      /* Style the dropdown button to fit inside the topnav */
-                      .dropdown .dropbtn {
-                          font-size: 22px;
-                          border: none;
-                          outline: none;
-                          color: white;
-                          padding: 14px 16px;
-                          background-color: inherit;
-                          font-family: inherit;
-                          margin: 0;
-                      }
+        textarea:focus, input:focus{
+            outline: none;
+        }
+        #seat {
+            height: 25px;
+            width: 25px;
+            border: 1px solid gray;
+            cursor:pointer;
+            border-radius:5px;
+            display: inline-block;
+            font-size: 12.5px;
+            font-family:Times, serif;
+            text-align: center;
+            padding:2px;
+        }
+        #seatS {
+            height: 25px;
+            width: 25px;
+            border: 1px solid gray;
+            cursor:pointer;
+            border-radius:50%;
+            display: inline-block;
+            font-size: 12.5px;
+            font-family:Times, serif;
+            text-align: center;
+            padding:2px;
 
-                      /* Style the dropdown content (hidden by default) */
-                      .dropdown-content {
-                          display: none;
-                          position: absolute;
-                          background-color: #f9f9f9;
-                          min-width: 160px;
-                          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-                          z-index: 1;
-                      }
+        }
+        #seat1 {
+            height: 20px;
+            width: 20px;
+            border: 1px solid gray;
+            cursor:pointer;
+            background-color: steelblue;
+            border-radius:5px;
+            font-size: 10.5px;
+            font-family:Times, serif;
+            padding:3.5px;
+        }
+        #seat2 {
+            height: 20px;
+            width: 20px;
+            border: 1px solid gray;
+            cursor:pointer;
+            background-color: #b8c6dd;
+            border-radius:5px;
+            display: inline-block;
+            font-size: 10.5px;
+            font-family:Times, serif;
+            padding:3.5px;
+        }
+        #seat3 {
+            height: 20px;
+            width: 20px;
+            border: 1px solid gray;
+            cursor:pointer;
+            background-color: #eff5f7;
+            border-radius:5px;
+            display: inline-block;
+            font-size: 10.5px;
+            font-family:Times, serif;
+            padding:3.5px;
+        }
+        #seat1S {
+            height: 21px;
+            width: 21px;
+            border: 1px solid gray;
+            cursor:pointer;
+            border-radius:50%;
+            background-color: #b8c6dd;
+            display: inline-block;
+            font-size: 10.5px;
+            font-family:Times, serif;
+            padding:3.5px;
 
-                      /* Style the links inside the dropdown */
-                      .dropdown-content a {
-                          float: justify;
-                          color: steelblue;
-                          padding: 12px 16px;
-                          text-decoration: none;
-                          display: block;
-                          text-align: left;
-                      }
+        }
+        #seat2S {
+            height: 21px;
+            width: 21px;
+            border: 1px solid gray;
+            cursor:pointer;
+            border-radius:50%;
+            background-color: #eff5f7;
+            display: inline-block;
+            font-size: 10.5px;
+            font-family:Times, serif;
+            padding:3.5px;
+        }
+        #walk{
+            padding:0px;
 
-                      /* Add a dark background on topnav links and the dropdown button on hover */
-                      .topnav a:hover, .dropdown:hover .dropbtn {
-                          background-color: steelblue;
-                          color: white;
-                      }
+        }
+        #driver{
+            background-color:gray;
+            height: 20px;
+            border-radius: 50%;
+        }
+        #bathroom{
+            height: 30px;
+            width: 30px;
+            border: 1px solid gray;
+            cursor:pointer;
+            background-color:#4fb6c6;
+            margin:2px;
+            text-align:center;
+            padding:4px;
+            font-family:Georgia, serif;
+        }
+        #block{
+            height: 20px;
+            width: 50px;
+            border: 1px solid gray;
+            border-radius:4px;
+            cursor:pointer;
+            background-color:#e2dd8a;
+            margin:2px;
+            text-align:center;
+            font-family:Georgia, serif;
+        }
+        .table1{
+            opacity=0.2;
+            background-color:#b8c6dd;
+            background-size: 100% 800px;
+            border-radius:5%;
+            margin-left:20px;
+            margin-right:20px;
+        }
 
-                      /* Add a grey background to dropdown links on hover */
-                      .dropdown-content a:hover {
-                          background-color: #deeff4;
-                          color: #638acc;
-                      }
+        .menu{
+            height:410px;
+            width:100%;
+            padding:20px;
+            border-radius:8px;
 
-                      /* Show the dropdown menu when the user moves the mouse over the dropdown button */
-                      .dropdown:hover .dropdown-content {
-                          display: block;
-                      }
+        }
+        .row{
+            margin-top:20px;
+        }
+        .grid{
+            height:500px;
+            width:100%;
+
+        }
+        /* Dropdown container - needed to position the dropdown content */
+        .dropdown {
+            float: right;
+            overflow: hidden;
+            padding-right:20px;
+        }
+
+        /* Style the dropdown button to fit inside the topnav */
+        .dropdown .dropbtn {
+            font-size: 22px;
+            border: none;
+            outline: none;
+            color: white;
+            padding: 14px 16px;
+            background-color: inherit;
+            font-family: inherit;
+            margin: 0;
+        }
+
+        /* Style the dropdown content (hidden by default) */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        /* Style the links inside the dropdown */
+        .dropdown-content a {
+            float: justify;
+            color: steelblue;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+
+        /* Add a dark background on topnav links and the dropdown button on hover */
+        .topnav a:hover, .dropdown:hover .dropbtn {
+            background-color: steelblue;
+            color: white;
+        }
+
+        /* Add a grey background to dropdown links on hover */
+        .dropdown-content a:hover {
+            background-color: #deeff4;
+            color: #638acc;
+        }
+
+        /* Show the dropdown menu when the user moves the mouse over the dropdown button */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .wrapper {
+            margin: 0 auto;
+            padding: 40px;
+            max-width: 800px;
+        }
+
+        .table {
+            margin: 0 0 40px 0;
+            width: 100%;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+            display: table;
+        }
+        @media screen and (max-width: 580px) {
+            .table {
+                display: block;
+            }
+        }
+
+        .row {
+            display: table-row;
+            background: #f6f6f6;
+        }
+
+        .row:nth-of-type(odd) {
+            background: #e9e9e9;
+        }
+
+        .row.header {
+            font-weight: 900;
+            color: #ffffff;
+            background: #2980b9;
+        }
+
+        @media screen and (max-width: 580px) {
+            .row {
+                padding: 14px 0 7px;
+                display: block;
+            }
+            .row.header {
+                padding: 0;
+                height: 6px;
+            }
+            .row.header .cell {
+                display: none;
+            }
+            .row .cell {
+                margin-bottom: 10px;
+            }
+            .row .cell:before {
+                margin-bottom: 3px;
+                content: attr(data-title);
+                min-width: 98px;
+                font-size: 10px;
+                line-height: 10px;
+                font-weight: bold;
+                text-transform: uppercase;
+                color: #969696;
+                display: block;
+            }
+        }
+
+        .cell {
+            padding: 6px 12px;
+            display: table-cell;
+        }
+
+        @media screen and (max-width: 580px) {
+            .cell {
+                padding: 2px 16px;
+                display: block;
+            }
+        }
+
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            transition: opacity 500ms;
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        .overlay:target {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .popup {
+            margin: 70px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 5px;
+            width: 30%;
+            position: relative;
+            transition: all 5s ease-in-out;
+        }
+
+        .popup h2 {
+            margin-top: 0;
+            color: #333;
+            font-family: Tahoma, Arial, sans-serif;
+        }
+        .popup .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            transition: all 200ms;
+            font-size: 30px;
+            font-weight: bold;
+            text-decoration: none;
+            color: #333;
+        }
+        .popup .close:hover {
+            color: steelblue;
+        }
+        .popup .content {
+            max-height: 30%;
+            overflow: auto;
+            text-decoration: none;
+        }
+
+        @media screen and (max-width: 700px){
+            .box{
+                width: 70%;
+            }
+            .popup{
+                width: 70%;
+            }
+        }
 
     </style>
-  </head>
+</head>
 
-  <body>
+<body>
 
 
-  <div class="nav">
+<div class="nav">
     <div class="nav-header">
-      <div class="nav-title">
-        <a href="{% url 'register' %}">Hostel Management</a>
-      </div>
+        <div class="nav-title">
+            <a href="{% url 'register' %}">Hostel Management</a>
+        </div>
     </div>
     <div class="nav-btn">
-      <label for="nav-check">
-        <span></span>
-        <span></span>
-        <span></span>
-      </label>
+        <label for="nav-check">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
     </div>
     <input type="checkbox" id="nav-check">
     <div class="nav-links">
-      <a href="{% url 'login' %}">Login</a>
-      <a href="{% url 'reg_form' %}">Register</a>
-      <a href=" ">Status</a>
+        <a href="{% url 'BH5_Floor4' %}">Status</a>
+
+        {% block more_links %}
+        {% endblock more_links %}
+
     </div>
-  </div>
+</div>
 
-  {% block content %}
-  {% endblock content %}
+{% block content %}
+{% endblock content %}
 
 
-  </body>
+</body>
 </html>

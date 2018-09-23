@@ -1,14 +1,42 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="wrap">
-    <div class="rooms">List of Rooms</div>
-    <ul class="rooms">
-        {% for room in rooms %}
-            <li class="{% if room.vacant %}vacant{% endif %}">
-               {{ room.name }} - {% if room.vacant %} vacant {% else %} occupied {% endif %}
-            </li>
-        {% endfor %}
-    </ul>
-</div>
+
+    <div class="wrapper">
+
+        <div class="table">
+
+            <div class="row header">
+                <div class="cell">
+                    Room Number
+                </div>
+                <div class="cell">
+                    Room Id
+                </div>
+                <div class="cell">
+                    Type
+                </div>
+                <div class="cell">
+                    Status
+                </div>
+            </div>
+            {% for room in rooms %}
+                <div class="row">
+                    <div class="cell" data-title="Number">
+                        {{ room.no }}
+                    </div>
+                    <div class="cell" data-title="Name">
+                        {{ room.name }}
+                    </div>
+                    <div class="cell" data-title="Type">
+                        {{ room.room_type }}
+                    </div>
+                    <div class="cell" style="{% if room.vacant %} color: green {% endif %}" data-title="Status">
+                        {% if room.vacant %} vacant {% else %} occupied {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
 {% endblock content %}

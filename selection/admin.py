@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Student, Room, Hostel, Course
+from .models import Student, Room, Hostel, Course, User, Warden
 
 
 @admin.register(Student)
@@ -23,9 +23,19 @@ class RoomAdmin(admin.ModelAdmin):
 
 @admin.register(Hostel)
 class HostelAdmin(admin.ModelAdmin):
-    list_display = ['name', 'gender', 'warden', 'caretaker']
+    list_display = ['name', 'gender']
 
 
 @admin.register(Course)
 class CourseAdmin(admin.ModelAdmin):
     list_display = ['code', 'room_type']
+
+
+@admin.register(User)
+class CourseAdmin(admin.ModelAdmin):
+    list_display = ['is_warden']
+
+
+@admin.register(Warden)
+class CourseAdmin(admin.ModelAdmin):
+    list_display = ['name']

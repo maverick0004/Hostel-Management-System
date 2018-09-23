@@ -1,5 +1,9 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
+
+
+class User(AbstractUser):
+    is_warden = models.BooleanField(default=False)
 
 
 class Student(models.Model):
@@ -32,9 +36,10 @@ class Student(models.Model):
         on_delete=models.CASCADE,
         null=True)
     room_allotted = models.BooleanField(default=False)
+    no_dues = models.BooleanField(default=True)
 
     def __str__(self):
-        return self.student_name
+        return self.enrollment_no
 
 
 class Room(models.Model):
@@ -58,7 +63,6 @@ class Hostel(models.Model):
         default=None,
         null=True)
     course = models.ManyToManyField('Course', default=None, blank=True)
-    warden = models.CharField(max_length=100, blank=True)
     caretaker = models.CharField(max_length=100, blank=True)
 
     def __str__(self):
@@ -73,3 +77,20 @@ class Course(models.Model):
 
     def __str__(self):
         return self.code
+
+
+class Warden(models.Model):
+    user = models.OneToOneField(
+        User,
+        default=None,
+        null=True,
+        on_delete=models.CASCADE)
+    name = models.CharField(max_length=200, null=True)
+    hostel = models.ForeignKey('Hostel',
+        default=None,
+        null=True,
+        on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
+

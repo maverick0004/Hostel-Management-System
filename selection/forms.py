@@ -1,7 +1,5 @@
-from django import forms
-from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from .models import Student
+from .models import Student, User, Course
 from django import forms
 
 
@@ -35,3 +33,11 @@ class SelectionForm(forms.ModelForm):
     class Meta:
         model = Student
         fields = ['room']
+
+
+class DuesForm(forms.Form):
+    choice = forms.ModelChoiceField(queryset=Student.objects.all().filter(no_dues=True))
+
+
+class NoDuesForm(forms.Form):
+    choice = forms.ModelChoiceField(queryset=Student.objects.all().filter(no_dues=False))

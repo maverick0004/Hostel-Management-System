@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="wrapper">
+
+        {% for student in students %}
+            {% if not student.no_dues %}
+                <div class="table">
+
+                    <div class="row">
+                        <div class="cell">
+                            Student Name
+                        </div>
+                        <div class="cell">
+                            {{ student.student_name }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">
+                            Father's Name
+                        </div>
+                        <div class="cell">
+                            {{ student.father_name }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">
+                            Enrollment Number
+                        </div>
+                        <div class="cell">
+                            {{ student.course }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">
+                            Date of birth (yyyy-mm-dd)
+                        </div>
+                        <div class="cell">
+                            {{ student.dob }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">
+                            Gender
+                        </div>
+                        <div class="cell">
+                            {{ student.gender }}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+
+        <a class="button-custom" href="{% url 'warden_add_due' %}">
+        Add a due
+    </a>
+    </div>
+{% endblock content %}
+
+
+{% block more_links %}
+    <a href="{% url 'warden_dues' %}">
+        Dues
+    </a>
+    <a href="{% url 'warden_add_due' %}">
+        Add Due
+    </a>
+    <a href="{% url 'warden_remove_due' %}">
+        Remove Due
+    </a>
+    <a href="{% url 'logout' %}">
+        Logout
+    </a>
+{% endblock more_links %}
